@@ -1,0 +1,214 @@
+// -*- mode: jsonc -*-
+{
+     "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "height": 0, // Waybar height (to be removed for auto height)
+    // "width": 1920, // Waybar width
+    "spacing": 10, // Gaps between modules (4px)
+    "margin-top": 7,
+    "margin-bottom": 1,
+    "mode": "dock",
+    // Choose the order of the modules
+    "modules-left": [
+	"custom/logo",
+	"cpu",
+        "memory"
+    ],
+    "modules-center": [
+	"hyprland/workspaces",
+        "sway/window"
+    ],
+    "modules-right": [
+	"custom/spotify",
+        "bluetooth",
+        "network",
+        "battery",
+        "battery#bat2",
+        "clock"
+    ],
+    // Modules configuration
+      "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{icon}",
+         "format-icons": {
+             "urgent": "",
+	     "active": "",
+ 	     "default": ""
+        }
+    },
+    "custom/spotify": {
+         "format": "{0}",
+         "escape": true,
+         "return-type": "json",
+         "max-length": 40,
+         "on-click": "playerctl -p spotify play-pause",
+         "on-click-right": "killall spotify",
+         "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+         "on-scroll-up" : "playerctl -p spotify next",
+         "on-scroll-down" : "playerctl -p spotify previous",
+         "exec": "/home/jcbuitrago/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+         "exec-if": "pgrep spotify"
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "interval": 10,
+        "consume-icons": {
+            "on": " " // Icon shows only when "consume" is on
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}",
+	"class": "shared-background"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+	"class": "shared-background"
+    },
+    "memory": {
+        "format": "{}% "
+    },
+   // "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+       // "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+       // "format": "{temperatureC}°C {icon}",
+       // "format-icons": ["", "", ""]
+   // },
+  
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2",
+        "class": "shared-background"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "nm-connection-editor",
+	"class": "shared-background"
+    },
+    "wlr/taskbar": {
+       "format": "{icon}",
+       "icon-size": 14,
+       "tooltip-format": "{title}",
+       "on-click": "activate",
+       "on-click-middle": "close",
+       "ignore-list": [
+          "kitty",
+          "Spotify"
+       ],
+       "app_ids-mapping": {
+         "firefoxdeveloperedition": "firefox-developer-edition"
+       },
+       "rewrite": {
+           "Firefox Web Browser": "Firefox",
+           "Foot Server": "Terminal"
+       }
+    },
+    "group/hardware": {
+	"orientation": "horizontal",
+	"modules": [
+	    "cpu",
+	    "memory"
+        ]
+   },
+   "disk": {
+	"interval": 30,
+	"format": "{specific_free:0.2f}GB/{specific_total:0.2f}GB",
+	"unit": "GB"
+	// 0.25 GB out of 2000.00 GB available. Alternatively 241.3MiB out of 1.9TiB available.
+   },
+   "custom/logo": {
+        "format": " ",
+   },
+   "bluetooth": {
+	"format-disabled": "",
+        "format-off": "",// an empty format will hide the module
+	"format-connected": " {num_connections}",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+   }
+   
+}
