@@ -1,1 +1,3 @@
 # my_dotfiles
+
+configuracion de hyprland y varias aplicaciones como neovim, fastfetch, rofi...
