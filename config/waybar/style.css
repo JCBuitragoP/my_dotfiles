@@ -35,9 +35,9 @@ button:hover {
 
 #workspaces {
     background-color: #FFFFFF;
-    border-radius: 15px;
     border: 3px solid #000000;
-    margin-left: 20px;
+    border-radius: 15px;
+    margin-left: 10px;
     margin-right: 5px;
     margin-bottom: 5px;
 
@@ -105,8 +105,8 @@ button:hover {
 
 #hardware {
     background-color: #ffffff;
-    border-radius: 15px;
     border: 3px solid #000000;
+    border-radius: 15px;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -127,8 +127,8 @@ button:hover {
 /* Styling for network stuff */ 
 #networking {
     background-color: #ffffff;
-    border-radius: 15px;
     border: 3px solid #000000;
+    border-radius: 15px;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -149,8 +149,8 @@ button:hover {
 /*Styling for date/time stuff */ 
 #time {
     background-color: #ffffff;
-    border-radius: 15px;
     border: 3px solid #000000;
+    border-radius: 15px;
     padding: 2px;
     margin-left: 5px;
     margin-right: 5px;
@@ -166,8 +166,8 @@ button:hover {
 /* Styling for the energy stuff(battery etc)*/ 
 #energy{
     background-color: #ffffff;
-    border-radius: 14px;
     border: 3px solid #000000;
+    border-radius: 14px;
     margin-right: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -186,6 +186,46 @@ button:hover {
     background-repeat: no-repeat;
     background-position: center;
     padding-left: 15px;
+    margin-left: 5px;
+}
+
+/* Syling for all sound related stuff */ 
+
+#sound {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    padding: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    background-color: #000000;
+}
+
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: black;
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: #1acce7;
+}
+
+#pulseaudio {
+    color: #000000;
+    padding: 2px;
+    margin-right: 5px;
     margin-left: 5px;
 }
 
