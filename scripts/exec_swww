@@ -1,0 +1,3 @@
+!/usr/bin/bash
+
+swww-init && swww img /home/jcbuitrago/Documents/wallpapers/asa_mitaka2.png
